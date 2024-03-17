@@ -1,0 +1,26 @@
+
+<ion-menu side="start" menuId="main-menu" contentId="content" type="overlay">
+ 
+  <ion-content>
+    <div class="menu-header-bg"></div>
+    <div class="header-content">
+      <img src="../../../../assets/icon/favicon.png" alt="">
+      <ng-container *ngIf="user">
+        <ion-label>
+          <h2>{{user.employee.first_name + ' ' +user.employee.last_name}}</h2>
+          <p>{{role}}</p>
+        </ion-label>
+      </ng-container>
+    </div>
+    <div class="action-button">
+      <ion-button (click)="logout()"> <ion-icon name="log-out-outline" slot="start"></ion-icon> Logout</ion-button>
+    </div>
+  
+    <ion-list lines="none" class="menu-items">
+      <ion-item *ngFor="let item of itemsMenu" [routerLink]="item.route" routerLinkActive="active">
+        <ion-icon [name]="item.icon" slot="start"></ion-icon> {{item.name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+  <ion-router-outlet id="content"></ion-router-outlet>
