@@ -9,8 +9,7 @@ export class AuthService {
   
   constructor(private router: Router,) {}
   isLoggedIn(): boolean {
-    // Check if the user is logged in based on your authentication mechanism
-    // For example, you can check if there's a user object stored in local storage
+    
     return !!localStorage.getItem('user');
   }
    async login(data: any) {

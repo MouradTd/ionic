@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, MenuController, NavController, ToastController } from '@ionic/angular';
-import { AuthService } from 'src/app/services/auth-service.service';
-import { WelcomePage } from '../welcome/welcome.page';
-import { RegisterPage } from '../register/register.page';
+import { AuthService } from 'src/app/services';
+
 
 @Component({
   selector: 'app-login',

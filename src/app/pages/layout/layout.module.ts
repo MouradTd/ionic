@@ -10,6 +10,7 @@ import { LayoutPage } from './layout.page';
 import { MenuPageModule } from "../utils/menu/menu.module";
 import { HomePageModule } from '../Prof/home/home.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
+import { ClassesPageModule } from '../Prof/classes/classes.module';
 
 @NgModule({
     declarations: [LayoutPage],
@@ -21,6 +22,7 @@ import { WelcomePageModule } from '../welcome/welcome.module';
         MenuPageModule,
         HomePageModule, // add this
         WelcomePageModule,
+        ClassesPageModule
     ]
 })
 export class LayoutPageModule {}

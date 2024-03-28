@@ -11,7 +11,7 @@ const ProfMenu = [
     {
         id: 2,
         name: 'Classes',
-        route: '/classes',
+        route: '/Prof/Classes',
         icon: 'pie-chart-outline',
         path: 'Classes'
     },

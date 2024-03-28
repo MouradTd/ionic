@@ -56,11 +56,17 @@ const routes: Routes = [
     children: [
       { path: 'DashboardProf', loadChildren: () => import('./pages/Prof/home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard]},
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule), canActivate: [AuthGuard]},
+      { path: 'Prof/Classes', loadChildren: () => import('./pages/Prof/classes/classes.module').then(m => m.ClassesPageModule), canActivate: [AuthGuard]},
+
       // other child routes...
     ]
   },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
   { path: 'register', loadChildren: () =>import('./pages/register/register.module').then( m => m.RegisterPageModule), },
+  {
+    path: 'classes',
+    loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule)
+  },
   // other routes...
 ];
 

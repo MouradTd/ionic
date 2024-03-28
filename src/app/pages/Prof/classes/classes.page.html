@@ -1,0 +1,69 @@
+<div class="flex-grow-1 container-fluid ">
+  <h5 class="py-3 mb-4 fw-medium text-muted">
+    Dashboard / <span class="text-dark">Classes</span> 
+  </h5>
+
+  <div
+    class="d-flex flex-row align-items-stretch justify-content-around"
+    *ngIf="kpis"
+  >
+      <app-card 
+      [title]="'Nombre des Classes'"
+      [count]="kpis.total_classes"
+      [color]="'bg-label-info'"
+      [icon]="'ti-user'"
+      [cardColor]="'card-border-shadow-info'"
+    ></app-card>
+    
+    <app-card 
+      [title]="'Nombre des Seances'"
+      [count]="kpis.total_seances"
+      [color]="'bg-label-success'"
+      [icon]="'ti-user'"
+      [cardColor]="'card-border-shadow-success'"
+    ></app-card>
+   
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card card-border-shadow-primary">
+          <div class="card-header">
+            <div class="d-flex  align-items-center">
+              <div>
+                <h5 class="fw-bold mb-1">Classes</h5>
+                <small class="fw-bold mb-1 text-light">Liste des Classes</small>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="classe" class="card-body border-top pt-4">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Classe</th>
+                    <th scope="col">Salle</th>
+                    <th scope="col">Heur Debut</th>
+                    <th scope="col">Heur Fin</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of classe">
+                    <td>{{ item.classe.nom }}</td>
+                    <td>{{ item.seance.salle }}</td>
+                    <td>{{ item.seance.heur_debut }}</td>
+                    <td>{{ item.seance.heur_fin }}</td>
+                    <td>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

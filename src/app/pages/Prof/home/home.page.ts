@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'src/app/utils/title';
-
+import { ProfService } from 'src/app/services';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
-  constructor(private titleService: TitleService) { }
-  ngOnInit() {
+  user: any;
+  kpis: any;
+  constructor(private titleService: TitleService,private profService: ProfService) {}
+  async ngOnInit() {
     this.titleService.changeTitle('Home');
+    await this.profService.stats().then((response) => {
+      console.log(response.data);
+      this.kpis = response.data;
+      
+    });
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-  test(){
-    console.log('test');
-  }
-
+  
 }

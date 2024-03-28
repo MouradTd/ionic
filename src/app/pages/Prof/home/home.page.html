@@ -1,6 +1,86 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="../../../../assets/icon/favicon.png" />
+    </ion-avatar>
+    <ion-label *ngIf="user">
+      <p>Hello,</p>
+      <h3>{{user.employee.first_name + ' ' +user.employee.last_name}}</h3>
+    </ion-label>
+  </ion-item>
+</ion-header>
 
+<ion-content>
+  <div class="slides ion-margin-bottom">
+    <div
+      class="swiper-slide d-flex flex-row align-items-center justify-content-around"
+      *ngIf="kpis"
+    >
+      <app-card
+        [title]="'Nombre des Classes'"
+        [count]="kpis.numClasses"
+        [color]="'bg-label-info'"
+        [icon]="'ti-user'"
+        [cardColor]="'card-border-shadow-info'"
+      ></app-card>
 
-<ion-content [fullscreen]="true" style="background-color: white;">
-  <h1>Home</h1>
-  <button (click)="test()">Click Test</button>
+      <app-card
+        [title]="'Nombre des Etudiants'"
+        [count]="kpis.numStudents"
+        [color]="'bg-label-success'"
+        [icon]="'ti-user'"
+        [cardColor]="'card-border-shadow-success'"
+      ></app-card>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Last File</h2>
+
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="document"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="7">
+            <ion-label>
+              <h4>Project.PDF</h4>
+              <h6>Google Drive/Docs</h6>
+            </ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="film"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="7">
+            <ion-label>
+              <h4>Project.MP4</h4>
+              <h6>Dropbox/Videos</h6>
+            </ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
 </ion-content>
