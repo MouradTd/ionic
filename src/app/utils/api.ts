@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 axios.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
 const api = (baseURL = environment.API_URL, token = localStorage.getItem('token')) => {
