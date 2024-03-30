@@ -43,6 +43,7 @@
                   <tr>
                     <th scope="col">Classe</th>
                     <th scope="col">Salle</th>
+                    <th scope="col">Seance</th>
                     <th scope="col">Heur Debut</th>
                     <th scope="col">Heur Fin</th>
                     <th></th>
@@ -52,10 +53,13 @@
                   <tr *ngFor="let item of classe">
                     <td>{{ item.classe.nom }}</td>
                     <td>{{ item.seance.salle }}</td>
+                    <td>{{ item.seance.nom }}</td>
                     <td>{{ item.seance.heur_debut }}</td>
                     <td>{{ item.seance.heur_fin }}</td>
                     <td>
-
+                      <button *ngIf="isHourBetween(item.seance.heur_debut, item.seance.heur_fin)" class="btn bg-label-primary">
+                        <i class="ti ti-pencil" [routerLink]="'/absences/' + item.classe.id"></i>
+                      </button>
                     </td>
                   </tr>
                 </tbody>

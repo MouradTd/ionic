@@ -11,6 +11,8 @@ import { MenuPageModule } from "../utils/menu/menu.module";
 import { HomePageModule } from '../Prof/home/home.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
 import { ClassesPageModule } from '../Prof/classes/classes.module';
+import { AbsencesPageModule } from '../Prof/absences/absences.module';
+import { ProfileStudentPageModule } from '../Admin/profile-student/profile-student.module';
 
 @NgModule({
     declarations: [LayoutPage],
@@ -22,7 +24,9 @@ import { ClassesPageModule } from '../Prof/classes/classes.module';
         MenuPageModule,
         HomePageModule, // add this
         WelcomePageModule,
-        ClassesPageModule
+        ClassesPageModule,
+        AbsencesPageModule,
+        ProfileStudentPageModule
     ]
 })
 export class LayoutPageModule {}

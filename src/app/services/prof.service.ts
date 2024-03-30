@@ -25,4 +25,22 @@ export class ProfService {
       return Promise.reject(error);
     }
   }
+  async getStudents(id: number) {
+    try {
+      const response = await api().get('/employe/getStudentsByClasse/'+id);
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  async InsertAbsences(data: any) {
+    try {
+      const response = await api().post('/absence/insert',data);
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

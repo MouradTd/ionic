@@ -24,5 +24,20 @@ export class ClassesPage implements OnInit {
       
     });
   }
+  isHourBetween(startHour: string, endHour: string) {
+    var now = new Date();
+    
+    var [startHourPart, startMinutePart] = startHour.split(':').map(Number);
+    var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHourPart, startMinutePart, 0);
+
+    var [endHourPart, endMinutePart] = endHour.split(':').map(Number);
+    var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHourPart, endMinutePart, 0);
+
+    if (start > end) {
+      end.setDate(end.getDate() + 1);
+    }
+
+    return now >= start && now <= end;
+  }
 
 }

@@ -1,0 +1,11 @@
+.container-fluid  {
+    width: 80%;
+    margin: auto;
+}
+
+/* CSS for mobile screens */
+@media only screen and (max-width: 600px) {
+    .container-fluid  {
+        width: 100%;
+    }
+}
