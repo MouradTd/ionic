@@ -1,0 +1,22 @@
+<div class="flex-grow-1 container-fluid ">
+  <h5 class="py-3 mb-4 fw-medium text-muted">
+    Dashboard / <span class="text-dark">Etudiants</span> 
+  </h5>
+
+  <div class="row mt-4 py-2">
+   
+    <ion-card *ngFor="let student of students" (swipe)="deleteStudent(student.id)" (click)="goToProfile(student.id)" class="ion-card">
+      <ion-card-header>
+        {{ student.name }}
+      </ion-card-header>
+      <!-- Add more card content here -->
+    </ion-card>
+    
+    
+  </div>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openAddStudentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div>

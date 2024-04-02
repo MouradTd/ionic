@@ -68,6 +68,11 @@ const routes: Routes = [
         loadChildren: () => import('./pages/Admin/profile-student/profile-student.module').then( m => m.ProfileStudentPageModule),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'student',
+        loadChildren: () => import('./pages/Admin/student-table/student-table.module').then( m => m.StudentTablePageModule),
+        canActivate: [AuthGuard]
+      },
       // other child routes...
     ]
   },
@@ -77,6 +82,12 @@ const routes: Routes = [
     path: 'classes',
     loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule)
   },
+  {
+    path: 'add-student-modal',
+    loadChildren: () => import('./pages/utils/add-student-modal/add-student-modal.module').then( m => m.AddStudentModalPageModule)
+  },
+  
+
   
   
   // other routes...
