@@ -1,0 +1,17 @@
+<!-- datetime-modal.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Date</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Enter Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MMMM-D" pickerFormat="DD MM YYYY" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+  <ion-button expand="full" (click)="closeModal()">OK</ion-button>
+</ion-content>

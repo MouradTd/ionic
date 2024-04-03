@@ -63,10 +63,10 @@ const AdminMenu = [
     },
     {
         id: 3,
-        name: 'Welcome Admin',
-        route: '/welcome',
+        name: 'Etudiants',
+        route: '/student',
         icon: 'pie-chart-outline',
-        path: 'Welcome'
+        path: 'Student'
     },
 ]
 

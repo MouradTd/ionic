@@ -3,19 +3,26 @@
     Dashboard / <span class="text-dark">Etudiants</span> 
   </h5>
 
-  <div class="row mt-4 py-2">
+  <div class="row mt-4 py-2" *ngIf="students">
    
     <ion-card *ngFor="let student of students" (swipe)="deleteStudent(student.id)" (click)="goToProfile(student.id)" class="ion-card">
       <ion-card-header>
-        {{ student.name }}
+        <ion-avatar slot="start">
+          <img src="../../../../assets/img/avatars/user_avatar.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+          <p>Age: {{ calculateStudentAge(student.birthdate) }} Ans | Email: {{ student.email}}</p>
+          <!-- <p>Class: {{ student.class }}</p> -->
+        </ion-label>
       </ion-card-header>
       <!-- Add more card content here -->
     </ion-card>
     
     
   </div>
-  <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="openAddStudentModal()">
+  <ion-fab vertical="bottom" horizontal="end" color="primary">
+    <ion-fab-button (click)="openAddStudentModal()" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

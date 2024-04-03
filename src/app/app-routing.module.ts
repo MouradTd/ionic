@@ -85,7 +85,11 @@ const routes: Routes = [
   {
     path: 'add-student-modal',
     loadChildren: () => import('./pages/utils/add-student-modal/add-student-modal.module').then( m => m.AddStudentModalPageModule)
+  },  {
+    path: 'date-time',
+    loadChildren: () => import('./pages/utils/date-time/date-time.module').then( m => m.DateTimePageModule)
   },
+
   
 
   

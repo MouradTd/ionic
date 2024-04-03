@@ -1,16 +1,4 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>AddStudentModal</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">AddStudentModal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
 
 <ion-header>
   <ion-toolbar>
@@ -21,22 +9,50 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="">
   <ion-list>
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
-      <ion-input type="text" [(ngModel)]="name"></ion-input>
+      <ion-input type="text" [(ngModel)]="first_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text" [(ngModel)]="last_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Phone</ion-label>
-      <ion-input type="text" [(ngModel)]="phone"></ion-input>
+      <ion-input type="tel" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-item>
+        <!-- <ion-label>Enter Date</ion-label> -->
+        <ion-button expand="full" (click)="openModal()">Selectionner une Date</ion-button>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Sexe</ion-label>
+      <ion-select [(ngModel)]="sexe">
+        <ion-select-option value="h">Homme</ion-select-option>
+        <ion-select-option value="f">Femme</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Classe Affectée</ion-label>
+      <ion-select [(ngModel)]="classe_id">
+        <ion-select-option disabled>Selectionner une classe</ion-select-option>
+        <ion-select-option *ngFor="let classe of classes" (value)="classe.id">{{classe.nom}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <!-- Add more input fields as needed -->
   </ion-list>
 
-  <ion-button expand="block" (click)="addStudent()">Add Student</ion-button>
+  <div class="float-end ">
+
+    <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal" (click)="dismiss()">Close</button>
+    <button type="submit" class="btn btn-primary m-2"(click)="addStudent()">Save changes</button>
+  </div>
 </ion-content>

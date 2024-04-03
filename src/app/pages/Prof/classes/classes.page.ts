@@ -11,6 +11,7 @@ import { TitleService } from 'src/app/utils/title';
 export class ClassesPage implements OnInit {
   classe: any;
   kpis:any;
+  role:any = localStorage.getItem('role');
 
   constructor(private titleService: TitleService,private profService: ProfService) {}
   async ngOnInit() {

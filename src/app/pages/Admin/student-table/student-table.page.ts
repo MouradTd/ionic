@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { TitleService } from 'src/app/utils';
+import { TitleService, helpers } from 'src/app/utils';
 import { AddStudentModalPage } from '../../utils/add-student-modal/add-student-modal.page';
 import { Router } from '@angular/router';
 import { Gesture, GestureController } from '@ionic/angular';
+import { AdminService } from 'src/app/services';
+
 
 @Component({
   selector: 'app-student-table',
@@ -11,48 +13,24 @@ import { Gesture, GestureController } from '@ionic/angular';
   styleUrls: ['./student-table.page.scss'],
 })
 export class StudentTablePage implements OnInit {
-  students = [
-    {
-      id: 1,
-      name: 'Mohamed',
-      email: '',
-      phone: '',
-    },
-    {
-      id: 2,
-      name: 'Ahmed',
-      email: '',
-      phone: '',
-    },
-    {
-      id: 3,
-      name: 'Ali',
-      email: '',
-      phone: '',
-    },
-    {
-      id: 4,
-      name: 'Khalid',
-      email: '',
-      phone: '',
-    },
-    {
-      id: 5,
-      name: 'Hassan',
-      email: '',
-      phone: '',
-    },
-  ];
+  students : any;
   constructor(
     private titleService: TitleService,
     private modalController: ModalController,
     private router: Router,
-    private gestureCtrl: GestureController
+    private gestureCtrl: GestureController,
+    private adminService: AdminService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.titleService.changeTitle('Etudiants');
     this.setupSwipeGesture();
+    await this.adminService.getStudents().then((response) => {
+      this.students = response.data.students;
+      console.log(this.students);
+      
+      
+    });
   }
 
   async openAddStudentModal() {
@@ -60,10 +38,14 @@ export class StudentTablePage implements OnInit {
       component: AddStudentModalPage,
       cssClass: 'add-student-modal',
     });
-    modal.onDidDismiss().then((data) => {
+    modal.onDidDismiss().then(async (data) => {
       if (data && data.data) {
-        // Add the new student to the list
-        this.students.push(data.data);
+        await this.adminService.addStudent(data.data).then((response) => {
+          this.students.push(response.data.student);
+          console.log(this.students);
+        });
+        console.log(data.data);
+        
       }
     });
     return await modal.present();
@@ -100,7 +82,7 @@ export class StudentTablePage implements OnInit {
   deleteStudent(studentId: number) {
     // Find index of the student with the given id
     const index = this.students.findIndex(
-      (student) => student.id === studentId
+      (student: { id: number; }) => student.id === studentId
     );
     if (index !== -1) {
       // Remove the student from the array
@@ -110,5 +92,8 @@ export class StudentTablePage implements OnInit {
 
   goToProfile(studentId: number) {
     this.router.navigate(['profile-student', studentId]);
+  }
+  calculateStudentAge(dateOfBirth: string): number {
+    return helpers.calculateAge(dateOfBirth);
   }
 }

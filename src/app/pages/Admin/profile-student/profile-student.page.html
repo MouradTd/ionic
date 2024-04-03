@@ -1,7 +1,7 @@
-<div class="flex-grow-1 container-fluid mt-3" v-if="intern">
+<div class="flex-grow-1 container-fluid mt-3" v-if="student">
   <div class="d-flex align-items-center justify-content-between mb-4">
     <h5 class="py-3 mb-4 fw-medium text-muted">
-      Profile / <span class="text-dark"> test test</span>
+      Profile / <span class="text-dark"> {{student.first_name +' '+ student.last_name}}</span>
     </h5>
     <div>
       <button
@@ -28,13 +28,8 @@
                 alt="User avatar"
               />
               <div class="user-info text-center">
-                <h4 class="mb-2">test test</h4>
-                <div class="d-flex align-items-center justify-content-around">
-                  <span class="badge mt-1"></span>
-                  <div class="favorite-flag">
-                    <i class="ti ti-star"></i> Potontiel
-                  </div>
-                </div>
+                <h4 class="mb-2"> {{student.first_name +' '+ student.last_name}}</h4>
+                
               </div>
             </div>
           </div>
@@ -43,45 +38,31 @@
             <ul class="list-unstyled">
               <li class="mb-2">
                 <span class="fw-medium me-1">Nom complet:</span>
-                <span>test</span>
+                <span> {{student.first_name +' '+ student.last_name}}</span>
               </li>
 
               <li class="mb-2 pt-1">
                 <span class="fw-medium me-1">Poste:</span>
-                <span>test</span>
+                <span> {{student.type }}</span>
               </li>
               <li class="mb-2 pt-1">
                 <span class="fw-medium me-1">CIN:</span>
-                <span>test</span>
+                <span>{{student.cin }}</span>
               </li>
             </ul>
           </div>
-          <p class="mt-4 small text-uppercase text-muted">DUREE DE TRAVAIL</p>
-          <div class="info-container">
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <span class="fw-medium me-1">Date debut:</span>
-                <span>test</span>
-              </li>
-            </ul>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <span class="fw-medium me-1">Date fin:</span>
-                <span>test</span>
-              </li>
-            </ul>
-          </div>
+          
           <p class="mt-4 small text-uppercase text-muted">CONTACT</p>
           <div class="info-container">
             <ul class="list-unstyled">
               <li class="mb-2">
                 <span class="fw-medium me-1">Adresse email:</span>
-                <span>test</span>
+                <span>{{student.email }}</span>
               </li>
 
               <li class="mb-2 pt-1">
                 <span class="fw-medium me-1">Numéro de téléphone:</span>
-                <span>test</span>
+                <span>{{student.phone_no }}</span>
               </li>
             </ul>
           </div>
@@ -274,17 +255,20 @@
                     <th>Reason</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>2021-09-01</td>
-                    <td>Illness</td>
+                <tbody *ngIf="student.absences && student.absences.length > 0; else noData">
+                  <tr *ngFor="let item of student.absences">
+                    <td>{{item.date}}</td>
+                    <td>{{item.motif ? "" : "-"}}</td>
                   </tr>
-                  <tr>
-                    <td>2021-09-05</td>
-                    <td>Family emergency</td>
-                  </tr>
-                  <!-- Add more rows for each absence -->
                 </tbody>
+
+                <ng-template #noData>
+                  <tbody>
+                    <tr>
+                      <td colspan="2" class="text-center">Aucune données a afficher</td>
+                    </tr>
+                  </tbody>
+                </ng-template>
               </table>
                     </div>
                 </div>
