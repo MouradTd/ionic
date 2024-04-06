@@ -252,13 +252,32 @@
                 <thead class="table-light">
                   <tr>
                     <th>Date</th>
-                    <th>Reason</th>
+                    <th>Seance</th>
+                    <th>Motif Attach</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody *ngIf="student.absences && student.absences.length > 0; else noData">
                   <tr *ngFor="let item of student.absences">
                     <td>{{item.date}}</td>
-                    <td>{{item.motif ? "" : "-"}}</td>
+                    <td>{{item.seance.nom}}</td>
+                    <td>
+                      
+                      
+                      <a *ngIf="item.motif; else noAttachment" class="btn btn-label-primary btn-sm" target="_blank" [href]="getFileUrl(item.motif)">
+                        <i class="ti ti-download me-2"></i> Télécharger l'attachement
+                      </a>
+
+                      <ng-template #noAttachment>
+                        <small>Aucun Attachement</small>
+                      </ng-template>
+                    </td>
+                    <td *ngIf="item.motif ===''">
+                      <button class="btn bg-label-warning" (click)="openModal(item.id)">
+                        <i class="ti ti-pencil me-2"></i>
+                        Modifier
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
 

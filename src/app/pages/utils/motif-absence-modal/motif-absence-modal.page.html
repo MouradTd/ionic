@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Motif d'absences</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="col-sm-12 p-2">
+      <div class="mb-3">
+          <label for="nameEx" class="form-label mb-2">Motif Attachement</label>
+          <input id="formFile" ref="cps" class="form-control" type="file"
+              accept=".pdf,.doc,.xlsx,.xls,.csv"(change)="fileChanged($event)" />
+      </div>
+    </div>
+    <!-- <ion-item class="mt-4">
+      <label>Motif</label>
+      <input type="file" (change)="fileChanged($event)" class="form-control" />
+    </ion-item> -->
+    <div class="float-end">
+      <button
+        type="button"
+        class="btn btn-secondary m-2"
+        data-bs-dismiss="modal"
+        (click)="closeModal()"
+      >
+        Close
+      </button>
+      <button type="submit" class="btn btn-primary m-2" (click)="closeModal()">
+        Save changes
+      </button>
+    </div>
+</ion-content>
+
+

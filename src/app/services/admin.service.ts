@@ -43,4 +43,13 @@ export class AdminService {
       return Promise.reject(error);
     }
   }
+  async MotifAbsences(id:number,data: any) {
+    try {
+      const response = await api().post('/absence/MotifAbsences/'+id,data);
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

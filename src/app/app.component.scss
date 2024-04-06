@@ -1,4 +1,9 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-
+.modal-wrapper {
+    --height: auto;
+    --width: auto;
+    --max-height: 90%;
+    --max-width: 90%;
+  }

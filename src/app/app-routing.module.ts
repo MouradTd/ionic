@@ -89,6 +89,10 @@ const routes: Routes = [
     path: 'date-time',
     loadChildren: () => import('./pages/utils/date-time/date-time.module').then( m => m.DateTimePageModule)
   },
+  {
+    path: 'motif-absence-modal',
+    loadChildren: () => import('./pages/utils/motif-absence-modal/motif-absence-modal.module').then( m => m.MotifAbsenceModalPageModule)
+  },
 
   
 

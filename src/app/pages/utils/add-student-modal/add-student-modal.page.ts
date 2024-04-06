@@ -39,7 +39,6 @@ export class AddStudentModalPage implements OnInit  {
   }
 
   addStudent() {
-    // Implement the logic to add the student using the provided data
     console.log('Adding student:', this.first_name, this.email, this.phone, this.sexe, this.birthdate, this.last_name);
     // Dismiss the modal after adding the student
     this.modalController.dismiss({

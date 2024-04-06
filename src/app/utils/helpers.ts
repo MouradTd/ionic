@@ -1,5 +1,6 @@
 import { Router } from "@angular/router";
 import { sideBar } from "./sidebar-items";
+import { environment } from "src/environments/environment";
 const setSavedUser = (res: any): void => {
 	localStorage.setItem('user', JSON.stringify(res.user));
 	localStorage.setItem('isOnline', 'true');
@@ -60,6 +61,9 @@ const calculateAge = (birthdate: string): number => {
 
     return age;
 }
+function baseUrl() {
+	return environment.UPLOADS_URL;
+}
 
 export const helpers = {
     setSavedUser,
@@ -67,5 +71,6 @@ export const helpers = {
     initialDashboard,
     roles,
 	returnSideBarItems,
-	calculateAge
+	calculateAge,
+	baseUrl
 }
