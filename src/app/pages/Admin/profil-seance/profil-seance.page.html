@@ -1,0 +1,163 @@
+<div class="flex-grow-1 container-fluid mt-3" *ngIf="seance ">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h5 class="py-3 mb-4 fw-medium text-muted">
+      Profile / <span class="text-dark"> {{seance.classe.nom}}</span>
+    </h5>
+    <div>
+      <button
+        class="btn btn-warning"
+        data-bs-target="#edit-stg"
+        data-bs-toggle="modal"
+      >
+        <i class="ti ti-pencil me-2"></i>
+        Modifier
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="seance">
+    <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
+      <div class="card card-border-shadow-primary mb-4">
+        <div class="card-body">
+          <div class="user-avatar-section">
+            <div class="d-flex align-items-center flex-column">
+              <img
+                class="img-fluid rounded mb-3 bg-primary p-2 pt-1 mt-4"
+                src="/src/assets/img/favicon.png"
+                height="100"
+                width="100"
+                alt="User avatar"
+              />
+              <div class="user-info text-center">
+                <h4 class="mb-2">{{seance.classe.nom}}</h4>
+                <span class="fw-bold badge mt-1 badge bg-label-info">
+                  {{ determineSeanceStatus(seance.date, seance.heur_debut,
+                  seance.heur_fin) }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom"
+          >
+            <div class="d-flex align-items-start me-4 mt-3 gap-2">
+              <span class="badge bg-label-primary p-2 rounded"
+                ><i class="ti ti-checkbox ti-sm"></i
+              ></span>
+              <div>
+                <p class="mb-0 fw-medium">{{seance.date}}</p>
+                <small class="fw-bold">Date de debut</small>
+              </div>
+            </div>
+            <div class="d-flex align-items-start mt-3 gap-2">
+              <span class="badge bg-label-primary p-2 rounded"
+                ><i class="ti ti-briefcase ti-sm"></i
+              ></span>
+              <div>
+                <p class="mb-0 fw-medium">
+                  {{seance.prof.first_name +' ' + seance.prof.last_name}}
+                </p>
+                <small class="fw-bold">Professeur</small>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 small text-uppercase text-muted">Horaires</p>
+          <div class="info-container">
+            <div
+              class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom"
+            >
+              <div class="d-flex align-items-start me-4 mt-3 gap-2">
+                <div>
+                  <small class="fw-bold">Heur Debut :</small>
+                  <p class="mb-0 fw-medium px-2">{{seance.heur_debut}}</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mt-3 gap-2">
+                <div>
+                  <small class="fw-bold">Heur Fin :</small>
+                  <p class="mb-0 fw-medium px-2">{{seance.heur_fin}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 col-lg-7 col-md-7">
+      <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            type="button"
+            class="nav-link active"
+            role="tab"
+            data-bs-toggle="tab"
+            data-bs-target="#student_dossier"
+            aria-controls="student"
+            aria-selected="true"
+          >
+            Info sur la seance
+          </button>
+        </li>
+      </ul>
+      <div
+        class="tab-content p-0"
+        style="background-color: transparent; !important"
+      >
+        <div
+          id="student_dossier"
+          class="tab-pane fade show active bg-none"
+          style="background-color: transparent; !important"
+          role="tabpanel"
+        >
+          <div class="row mb-3">
+            <div class="col-xxl-12">
+              <div class="card card-border-shadow-info">
+                <div class="card-header">
+                  <h5 class="card-title">Listes des Etudiants</h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Nom</th>
+                          <th>Email</th>
+                          <th>Numero</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="students && students.length > 0; else noData">
+                        <tr *ngFor="let item of students">
+                          <td>{{item.first_name +' ' + item.last_name}}</td>
+                          <td>{{item.email}}</td>
+                          <td>{{item.phone_no}}</td>
+                          <td>
+                            <span *ngIf="item.absent" class="fw-bold badge mt-1 badge bg-label-warning">
+                              Absent
+                            </span>
+                            <span *ngIf="!item.absent" class="fw-bold badge mt-1 badge bg-label-success">
+                              Present
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <ng-template #noData>
+                        <tbody>
+                          <tr>
+                            <td colspan="3" class="text-center">
+                              Aucune données a afficher
+                            </td>
+                          </tr>
+                        </tbody>
+                      </ng-template>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

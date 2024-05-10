@@ -73,19 +73,30 @@ const routes: Routes = [
         loadChildren: () => import('./pages/Admin/student-table/student-table.module').then( m => m.StudentTablePageModule),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'sceance',
+        loadChildren: () => import('./pages/Admin/sceance-table/sceance-table.module').then( m => m.SceanceTablePageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'classes',
+        loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule)
+      },
+      {
+        path: 'profile-seance/:seanceId',
+        loadChildren: () => import('./pages/Admin/profil-seance/profil-seance.module').then( m => m.ProfilSeancePageModule)
+      },
       // other child routes...
     ]
   },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
   { path: 'register', loadChildren: () =>import('./pages/register/register.module').then( m => m.RegisterPageModule), },
-  {
-    path: 'classes',
-    loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule)
-  },
+  
   {
     path: 'add-student-modal',
     loadChildren: () => import('./pages/utils/add-student-modal/add-student-modal.module').then( m => m.AddStudentModalPageModule)
-  },  {
+  },
+  {
     path: 'date-time',
     loadChildren: () => import('./pages/utils/date-time/date-time.module').then( m => m.DateTimePageModule)
   },
@@ -93,6 +104,16 @@ const routes: Routes = [
     path: 'motif-absence-modal',
     loadChildren: () => import('./pages/utils/motif-absence-modal/motif-absence-modal.module').then( m => m.MotifAbsenceModalPageModule)
   },
+  {
+    path: 'add-sceance-modal',
+    loadChildren: () => import('./pages/utils/add-sceance-modal/add-sceance-modal.module').then( m => m.AddSceanceModalPageModule)
+  },
+  {
+    path: 'sceance-table',
+    loadChildren: () => import('./pages/Admin/sceance-table/sceance-table.module').then( m => m.SceanceTablePageModule)
+  },
+  
+
 
   
 

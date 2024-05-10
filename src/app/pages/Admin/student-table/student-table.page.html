@@ -5,7 +5,7 @@
 
   <div class="row mt-4 py-2" *ngIf="students">
    
-    <ion-card *ngFor="let student of students" (swipe)="deleteStudent(student.id)" (click)="goToProfile(student.id)" class="ion-card">
+    <ion-card *ngFor="let student of students" (swipe)="deleteStudent(student.id)" (click)="goToProfile(student.id)" class="ion-card my-1">
       <ion-card-header>
         <ion-avatar slot="start">
           <img src="../../../../assets/img/avatars/user_avatar.png">
@@ -21,9 +21,9 @@
     
     
   </div>
-  <ion-fab vertical="bottom" horizontal="end" color="primary">
+  <ion-fab vertical="bottom" horizontal="end" color="primary" class="fab-fixed">
     <ion-fab-button (click)="openAddStudentModal()" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+</ion-fab>
 </div>

@@ -52,4 +52,36 @@ export class AdminService {
       return Promise.reject(error);
     }
   }
+  async getProfs() {
+    try {
+      const response = await api().get('/employe/getProfs');
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  async addSeance(data: any) {
+    try {
+      const response = await api().post('/sceance/insert', data);
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  async getSeances() {
+    try {
+      const response = await api().get('/sceance/get');
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  async getSeancesById(id:number) {
+    try {
+      const response = await api().get('/sceance/get/'+id);
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

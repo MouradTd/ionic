@@ -26,7 +26,7 @@ export class ProfileStudentPage implements OnInit {
     this.titleService.changeTitle('Profile Etudiant');
     await this.adminService.getStudent(Number(studentId)).then((response) => {
       this.student = response.data.student;
-      console.log(this.student);
+      
     });
   }
   async openModal(absenceId: number) {

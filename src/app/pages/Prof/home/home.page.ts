@@ -11,6 +11,7 @@ export class HomePage implements OnInit {
   kpis: any;
   constructor(private titleService: TitleService,private profService: ProfService) {}
   async ngOnInit() {
+    this.user = {};
     this.titleService.changeTitle('Home');
     await this.profService.stats().then((response) => {
       console.log(response.data);

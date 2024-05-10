@@ -22,11 +22,11 @@ import { ProfileStudentPageModule } from '../Admin/profile-student/profile-stude
         IonicModule,
         LayoutPageRoutingModule,
         MenuPageModule,
-        HomePageModule, // add this
-        WelcomePageModule,
-        ClassesPageModule,
-        AbsencesPageModule,
-        ProfileStudentPageModule
+        // HomePageModule, 
+        // WelcomePageModule,
+        // ClassesPageModule,
+        // AbsencesPageModule,
+        // ProfileStudentPageModule
     ]
 })
 export class LayoutPageModule {}

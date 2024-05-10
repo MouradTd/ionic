@@ -68,6 +68,13 @@ const AdminMenu = [
         icon: 'pie-chart-outline',
         path: 'Student'
     },
+    {
+        id: 3,
+        name: 'Sceances',
+        route: '/sceance',
+        icon: 'pie-chart-outline',
+        path: 'Sceances'
+    },
 ]
 
 export const sideBar = {

@@ -1,0 +1,58 @@
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Seance</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modal-wrapper">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Heur Debut</ion-label>
+      <ion-input type="time" [(ngModel)]="heur_debut" placeholder="Heur Debut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Heur Fin</ion-label>
+      <ion-input type="time" [(ngModel)]="heur_fin" placeholder="Heur Fin"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input type="email" [(ngModel)]="nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Salle</ion-label>
+      <ion-input type="tel" [(ngModel)]="salle"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-item>
+        <ion-button expand="full" (click)="openModal()">Selectionner une Date</ion-button>
+      </ion-item>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Classe Affectée</ion-label>
+      <ion-select [(ngModel)]="classe_id">
+        <ion-select-option disabled>Selectionner une classe</ion-select-option>
+        <ion-select-option *ngFor="let classe of classes" [value]="classe.id">{{classe.nom}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Professeur Affectée</ion-label>
+      <ion-select [(ngModel)]="prof_id">
+        <ion-select-option disabled>Selectionner une classe</ion-select-option>
+        <ion-select-option *ngFor="let prof of profs" [value]="prof.id">{{prof.first_name +' ' + prof.last_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- Add more input fields as needed -->
+  </ion-list>
+
+  <div class="float-end ">
+
+    <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal" (click)="dismiss()">Close</button>
+    <button type="submit" class="btn btn-primary m-2"(click)="addSceance()">Save changes</button>
+  </div>
+</ion-content>

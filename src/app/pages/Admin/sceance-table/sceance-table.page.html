@@ -1,0 +1,55 @@
+<div class="flex-grow-1 container-fluid ">
+  <h5 class="py-3 mb-4 fw-medium text-muted">
+    Dashboard / <span class="text-dark">Seances</span> 
+  </h5>
+
+  <!-- <div class="row mt-4 py-2" *ngIf="seances">
+   
+    <ion-card *ngFor="let item of seances"   class="ion-card">
+      <ion-card-header>
+        <ion-avatar slot="start">
+          <img src="../../../../assets/img/avatars/user_avatar.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ item.nom }} </h2>
+          <p>Date: {{ item.date }} | Email: {{ item.salle}}</p>
+        </ion-label>
+      </ion-card-header>
+    </ion-card> 
+  </div> -->
+  <div class="row mt-4 py-2" *ngIf="seances">
+    <ion-card *ngFor="let item of seances" class="ion-card my-1" (click)="goToProfile(item.id)">
+      <ion-card-header>
+        <ion-avatar slot="start">
+          <img src="../../../../assets/img/avatars/user_avatar.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ item.nom }}</h2>
+          <p>Date: {{ item.date }} | Email: {{ item.salle}}</p>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p>Start Time: {{ item.heur_debut }}</p>
+              <p>End Time: {{ item.heur_fin }}</p>
+              <p>Class: {{ item.classe.nom }}</p>
+            </ion-col>
+            <ion-col>
+              <p>Professor: {{ item.prof.first_name }} {{ item.prof.last_name }}</p>
+              <p>Email: {{ item.prof.email }}</p>
+              <p>Room: {{ item.salle }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" color="primary" class="fab-fixed">
+      <ion-fab-button (click)="openAddStudentModal()" >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+</div>

@@ -17,11 +17,11 @@ export class MenuPage implements OnInit {
   user: any
   role:string = '';
   ngOnInit() {
+    this.itemsMenu = [];
+    this.user = {};
     this.itemsMenu = helpers.returnSideBarItems();
-    console.log(this.itemsMenu);
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.role = localStorage.getItem('role') || '';
-    
     
   }
   logout(){
