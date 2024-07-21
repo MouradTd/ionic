@@ -12,75 +12,44 @@
 
 <ion-content>
   <div class="slides ion-margin-bottom">
-    <div
-      class="swiper-slide d-flex flex-row align-items-center justify-content-around"
-      *ngIf="kpis"
-    >
-      <app-card
-        [title]="'Nombre des Classes'"
-        [count]="kpis.numClasses"
-        [color]="'bg-label-info'"
-        [icon]="'ti-user'"
-        [cardColor]="'card-border-shadow-info'"
-      ></app-card>
+    <div class="swiper-slide d-flex flex-row align-items-center justify-content-around" *ngIf="kpis">
+      <app-card [title]="'Nombre des Classes'" [count]="kpis.numClasses" [color]="'bg-label-info'" [icon]="'ti-user'"
+        [cardColor]="'card-border-shadow-info'"></app-card>
 
-      <app-card
-        [title]="'Nombre des Etudiants'"
-        [count]="kpis.numStudents"
-        [color]="'bg-label-success'"
-        [icon]="'ti-user'"
-        [cardColor]="'card-border-shadow-success'"
-      ></app-card>
+      <app-card [title]="'Nombre des Etudiants'" [count]="kpis.numStudents" [color]="'bg-label-success'"
+        [icon]="'ti-user'" [cardColor]="'card-border-shadow-success'"></app-card>
     </div>
   </div>
 
   <div class="container">
     <h2>Last File</h2>
+    <div *ngIf="absences">
+      <ng-container *ngFor="let item of absences">
+        <ion-item lines="none" *ngIf="item.motif">
+          <ion-grid>
+            <ion-row class="ion-align-items-center">
+              <ion-col size="3">
+                <ion-button color="light" fill="clear" [href]="getFileUrl(item.motif)" target="_blank">
+                  <ion-icon slot="icon-only" name="document"></ion-icon>
+                </ion-button>
+              </ion-col>
 
-    <ion-item lines="none">
-      <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="3">
-            <ion-button color="light" fill="clear">
-              <ion-icon slot="icon-only" name="document"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="7">
-            <ion-label>
-              <h4>Project.PDF</h4>
-              <h6>Google Drive/Docs</h6>
-            </ion-label>
-          </ion-col>
-          <ion-col size="2">
-            <ion-button color="light" fill="clear">
-              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="3">
-            <ion-button color="light" fill="clear">
-              <ion-icon slot="icon-only" name="film"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="7">
-            <ion-label>
-              <h4>Project.MP4</h4>
-              <h6>Dropbox/Videos</h6>
-            </ion-label>
-          </ion-col>
-          <ion-col size="2">
-            <ion-button color="light" fill="clear">
-              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+              <ion-col size="7">
+                <ion-label>
+                  <h4>{{item.motif}}</h4>
+                  <h6>Motif for {{item.student.first_name +' '+item.student.last_name }} absences on {{item.date}} in
+                    seance {{item.seance.nom}}</h6>
+                </ion-label>
+              </ion-col>
+              <ion-col size="2">
+                <ion-button color="light" fill="clear">
+                  <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ng-container>
+    </div>
   </div>
 </ion-content>

@@ -18,9 +18,10 @@ export class AbsencesPage implements OnInit {
     private route: ActivatedRoute) {}
   async ngOnInit() {
     const classId = this.route.snapshot.paramMap.get('classeId');
+    const sceanceId = this.route.snapshot.paramMap.get('sceanceId');
     this.titleService.changeTitle('Absences');
     if (classId) {
-      await this.profService.getStudents(Number(classId)).then((response) => {
+      await this.profService.getStudents(Number(classId),Number(sceanceId)).then((response) => {
         console.log(response.data.students);
         this.students = response.data.students;
         this.classe = response.data.classe;
@@ -36,7 +37,7 @@ export class AbsencesPage implements OnInit {
     } else {
       this.checkedStudents = this.checkedStudents.filter(studentId => studentId !== id);
     }
-    console.log(this.checkedStudents);
+    console.log(this.checkedStudents);    
   }
 
   submit = async () => {

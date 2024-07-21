@@ -58,7 +58,7 @@
                     <td>{{ item.seance.heur_fin }}</td>
                     <td>
                       <button *ngIf="isHourBetween(item.seance.heur_debut, item.seance.heur_fin) && role === 'Professeur'" class="btn bg-label-primary">
-                        <i class="ti ti-pencil" [routerLink]="'/absences/' + item.classe.id"></i>
+                        <i class="ti ti-pencil" [routerLink]="'/absences/' + item.classe.id+'/'+item.seance.id"></i>
                       </button>
                     </td>
                   </tr>

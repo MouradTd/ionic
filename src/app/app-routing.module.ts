@@ -58,7 +58,7 @@ const routes: Routes = [
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule), canActivate: [AuthGuard]},
       { path: 'Prof/Classes', loadChildren: () => import('./pages/Prof/classes/classes.module').then(m => m.ClassesPageModule), canActivate: [AuthGuard]},
       {
-        path: 'absences/:classeId',
+        path: 'absences/:classeId/:sceanceId',
         loadChildren: () => import('./pages/Prof/absences/absences.module').then( m => m.AbsencesPageModule),
         canActivate: [AuthGuard]
 

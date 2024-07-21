@@ -25,9 +25,9 @@ export class ProfService {
       return Promise.reject(error);
     }
   }
-  async getStudents(id: number) {
+  async getStudents(id: number,sceanceId: number) {
     try {
-      const response = await api().get('/employe/getStudentsByClasse/'+id);
+      const response = await api().get('/employe/getStudentsByClasse/'+id+'/'+sceanceId);
      
       return response;
     } catch (error) {
@@ -43,4 +43,14 @@ export class ProfService {
       return Promise.reject(error);
     }
   }
+  async getLatestAbsences() {
+    try {
+      const response = await api().get('/absence/getLatestAbsences');
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
 }

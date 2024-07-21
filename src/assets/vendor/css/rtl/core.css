@@ -19,13 +19,13 @@
   --bs-green: #28c76f;
   --bs-teal: #20c997;
   --bs-cyan: #00cfe8;
-  --bs-black: #324877;
+  --bs-black: #7590d6;
   --bs-white: #fff;
   --bs-gray: rgba(75, 70, 92, 0.6);
   --bs-gray-dark: rgba(75, 70, 92, 0.8);
   --bs-gray-25: rgba(75, 70, 92, 0.015);
   --bs-gray-50: rgba(75, 70, 92, 0.03);
-  --bs-primary: #324877;
+  --bs-primary: #7590d6;
   --bs-secondary: #a8aaae;
   --bs-success: #28c76f;
   --bs-info: #00cfe8;
@@ -2122,15 +2122,15 @@ progress {
 }
 
 .table-primary {
-  --bs-table-color: #324877;
+  --bs-table-color: #7590d6;
   --bs-table-bg: #f4f3fe;
   --bs-table-border-color: #d2d0de;
   --bs-table-striped-bg: #f1f0fb;
-  --bs-table-striped-color: #324877;
+  --bs-table-striped-color: #7590d6;
   --bs-table-active-bg: #e6e5f1;
-  --bs-table-active-color: #324877;
+  --bs-table-active-color: #7590d6;
   --bs-table-hover-bg: #edecf8;
-  --bs-table-hover-color: #324877;
+  --bs-table-hover-color: #7590d6;
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
