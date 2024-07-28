@@ -1,6 +1,6 @@
 <div class="flex-grow-1 container-fluid mt-3">
   <h5 class="py-3 mb-4 fw-medium text-muted">
-    Dashboard / <span class="text-dark">Classes</span> 
+    Dashboard / <span class="text-dark">Toute les Classes</span> 
   </h5>
 
   <div
@@ -9,18 +9,10 @@
   >
       <app-card 
       [title]="'Nombre des Classes'"
-      [count]="kpis.total_classes"
+      [count]="classe.length"
       [color]="'bg-label-info'"
       [icon]="'ti-user'"
       [cardColor]="'card-border-shadow-info'"
-    ></app-card>
-    
-    <app-card 
-      [title]="'Nombre des Seances'"
-      [count]="kpis.total_seances"
-      [color]="'bg-label-success'"
-      [icon]="'ti-user'"
-      [cardColor]="'card-border-shadow-success'"
     ></app-card>
    
   </div>
@@ -42,30 +34,22 @@
                 <thead class="table-light">
                   <tr>
                     <th scope="col">Classe</th>
-                    <th scope="col">Salle</th>
-                    <th scope="col">Seance</th>
-                    <th scope="col">Heur Debut</th>
-                    <th scope="col">Heur Fin</th>
-                    <th></th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of classe">
-                    <td>{{ item.classe.nom }}</td>
-                    <td>{{ item.seance.salle }}</td>
-                    <td>{{ item.seance.nom }}</td>
-                    <td>{{ item.seance.heur_debut }}</td>
-                    <td>{{ item.seance.heur_fin }}</td>
+                    <td>{{ item.nom }}</td>
                     <td>
-                      <button *ngIf="isHourBetween(item.seance.heur_debut, item.seance.heur_fin) && role === 'Professeur'" class="btn bg-label-primary">
-                        <i class="ti ti-pencil" [routerLink]="'/absences/' + item.classe.id+'/'+item.seance.id"></i>
+                      <button  class="btn bg-label-primary">
+                        <i class="ti ti-eye" [routerLink]="'/classe/' + item.id"></i>
                       </button>
                     </td>
                   </tr>
                 </tbody>
                 <tbody *ngIf="classe.length === 0">
                   <tr>
-                    <td colspan="6" class="text-center">Aucune classe n'est disponible</td>
+                    <td colspan="2" class="text-center">Aucune classe n'est disponible</td>
                   </tr>
                 </tbody>
               </table>

@@ -84,4 +84,13 @@ export class AdminService {
       return Promise.reject(error);
     }
   }
+  async getClasseById(id:any) {
+    try {
+      const response = await api().get('/classe/get/'+id);
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

@@ -80,11 +80,33 @@ const routes: Routes = [
       },
       {
         path: 'classes',
-        loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule)
+        loadChildren: () => import('./pages/Prof/classes/classes.module').then( m => m.ClassesPageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'all/classes',
+        loadChildren: () => import('./pages/Prof/allclasses/allclasses.module').then( m => m.AllclassesPageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'profile-seance/:seanceId',
-        loadChildren: () => import('./pages/Admin/profil-seance/profil-seance.module').then( m => m.ProfilSeancePageModule)
+        loadChildren: () => import('./pages/Admin/profil-seance/profil-seance.module').then( m => m.ProfilSeancePageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'seance',
+        loadChildren: () => import('./pages/Student/seance/seance.module').then( m => m.SeancePageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'all/seance',
+        loadChildren: () => import('./pages/Student/allseance/allseance.module').then( m => m.AllseancePageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'classe/:classeId',
+        loadChildren: () => import('./pages/Prof/profile-classe/profile-classe.module').then( m => m.ProfileClassePageModule),
+        canActivate: [AuthGuard]
       },
       // other child routes...
     ]
@@ -112,6 +134,9 @@ const routes: Routes = [
     path: 'sceance-table',
     loadChildren: () => import('./pages/Admin/sceance-table/sceance-table.module').then( m => m.SceanceTablePageModule)
   },
+  
+  
+ 
   
 
 

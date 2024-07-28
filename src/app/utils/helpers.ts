@@ -20,7 +20,7 @@ const initialDashboard = (role: string): string => {
 		case roles.ADMIN:
 			return 'DashboardProf';
 		case roles.ETUD:
-			return 'welcome';
+			return 'seance';
 		default:
 			return '404';
 	}

@@ -52,5 +52,14 @@ export class ProfService {
       return Promise.reject(error);
     }
   }
+  async getAllClasses() {
+    try {
+      const response = await api().get('/classe/GetAllClasses');
+     
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 
 }

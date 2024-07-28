@@ -1,0 +1,58 @@
+<div class="flex-grow-1 container-fluid mt-3">
+  <h5 class="py-3 mb-4 fw-medium text-muted">
+    Dashboard / <span class="text-dark">Seances</span> 
+  </h5>
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card card-border-shadow-primary">
+        <div class="card-header">
+          <div class="d-flex  align-items-center">
+            <div>
+              <h5 class="fw-bold mb-1">Seances</h5>
+              <small class="fw-bold mb-1 text-light">Liste des Seances</small>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="seances" class="card-body border-top pt-4">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Classe</th>
+                    <th scope="col">Salle</th>
+                    <th scope="col">Prof de la sceace</th>
+                    <th scope="col">Seance</th>
+                    <th scope="col">Heur Debut</th>
+                    <th scope="col">Heur Fin</th>
+                    <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of seances">
+                    <td>{{ item.classe.nom }}</td>
+                    <td>{{ item.salle }}</td>
+                    <td>{{ item.prof.first_name +' '+ item.prof.last_name}}</td>
+                    <td>{{ item.nom }}</td>
+                    <td>{{ item.heur_debut }}</td>
+                    <td>{{ item.heur_fin }}</td>
+                    <td>
+                      <button  class="btn bg-label-primary">
+                        <i class="ti ti-eye"></i>
+                      </button>
+                    </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="seances.length === 0">
+                <tr>
+                  <td colspan="7" class="text-center">Aucune seances n'est disponible</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
